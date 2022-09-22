@@ -1,2 +1,2 @@
-# LivingLab-Deploy
-LivingLab Main Repository
+# LivingLab Contents management system Central Server
+
