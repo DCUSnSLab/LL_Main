@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 대시보드</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'Management/css/adminDashboard.css' %}">
+
+</head>
+<body>
+  <div class="side-menu">
+        <div class="brand-name">
+            <h1><a style="color: white" href="{% url 'Dashboard' %}">CMS 관리 대시보드</a></h1>
+        </div>
+        <ul>
+
+            <li><img src="{% static 'Management/img/reading-book (1).png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'Admin'%}">관리자</a></span></li>
+            <li><img src="{% static 'Management/img/reading-book (1).png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'Mypage'%}">마이페이지</a></span></li>
+            <li><img src="{% static 'Management/img/school.png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'ViewShelter'%}">쉘터</a></span></li>
+            <li><img src="{% static 'Management/img/dashboard (2).png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'ViewContent'%}">콘텐츠</a></span></li>
+            <li><img src="{% static 'Management/img/payment.png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'ViewAdvertisement'%}">광고</a></span> </li>
+            <li><img src="{% static 'Management/img/payment.png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'ViewCommunity'%}">커뮤니티</a></span></li>
+            <li><img src="{% static 'Management/img/help-web-button.png' %}" alt="">&nbsp; &nbsp;
+                <span>도움말</span></li>
+            <li><img src="{% static 'Management/img/settings.png' %}" alt="">&nbsp; &nbsp;
+                <span>설정</span> </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="{% static 'Management/img/search.png' %}" alt=""></button>
+                </div>
+                <div class="user">
+                    <a href="{% url 'Logout' %}" class="btn">로그아웃</a>
+                    <img src="{% static 'Management/img/notifications.png' %}" alt="">
+                    <div class="img-case">
+                        <img src="{% static 'Management/img/user.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <div class="box">
+                        <h1>{{adminCnt}}</h1>
+                        <h3>관리자</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="{% static 'Management/img/students.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>{{shelterCnt}}</h1>
+                        <h3>쉘터</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="{% static 'Management/img/schools.png' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <h1>{{contentCnt}}</h1>
+                        <h3>콘텐츠</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="{% static 'Management/img/students.png' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <h1>{{advertisementCnt}}</h1>
+                        <h3>광고</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="{% static 'Management/img/income.png' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <h1>{{communityCnt}}</h1>
+                        <h3>커뮤니티</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="{% static 'Management/img/students.png' %}" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="content-2">
+                <div class="recent-payments">
+                    <div class="title">
+                        <h2>최근 등록 콘텐츠</h2>
+                        <a href="#" class="btn">모두보기</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>콘텐츠명</th>
+                            <th>지정쉘터</th>
+                            <th>제작자명</th>
+                            <th>타입</th>
+                            <th>테마</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>콘텐츠 1</td>
+                            <td>쉘터 1</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td><a href="#" class="btn">자세히</a></td>
+                        </tr>
+                        <tr>
+                            <td>콘텐츠 2</td>
+                            <td>쉘터 2</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td><a href="#" class="btn">자세히</a></td>
+                        </tr>
+                        <tr>
+                            <td>콘텐츠 3</td>
+                            <td>쉘터 3</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td><a href="#" class="btn">자세히</a></td>
+                        </tr>
+                        <tr>
+                            <td>콘텐츠 4</td>
+                            <td>쉘터 4</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td><a href="#" class="btn">자세히</a></td>
+                        </tr>
+                        <tr>
+                            <td>콘텐츠 5</td>
+                            <td>쉘터 5</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td><a href="#" class="btn">자세히</a></td>
+                        </tr>
+                        <tr>
+                            <td>콘텐츠 6</td>
+                            <td>쉘터 6</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td><a href="#" class="btn">자세히</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="new-students">
+                    <div class="title">
+                        <h2>N/A</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>N/A</th>
+                            <th>N/A</th>
+                            <th>N/A</th>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'Management/img/user.png' %}" alt=""></td>
+                            <td>N/A</td>
+                            <td><img src="{% static 'Management/img/info.png' %}" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'Management/img/user.png' %}" alt=""></td>
+                            <td>N/A</td>
+                            <td><img src="{% static 'Management/img/info.png' %}" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'Management/img/user.png' %}" alt=""></td>
+                            <td>N/A</td>
+                            <td><img src="{% static 'Management/img/info.png' %}" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'Management/img/user.png' %}" alt=""></td>
+                            <td>N/A</td>
+                            <td><img src="{% static 'Management/img/info.png' %}" alt=""></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="{% static 'Management/js/adminDashboard.js' %}"></script>
+</body>
+</html>

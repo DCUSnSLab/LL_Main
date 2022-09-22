@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 대시보드</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'Management/css/adminDashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'Management/css/detailAdmin.css' %}">
+    <link rel="stylesheet" href="{% static 'Management/css/DetailCommunity.css' %}">
+
+</head>
+<body>
+  <div class="side-menu">
+        <div class="brand-name">
+            <h1><a style="color: white" href="{% url 'Dashboard' %}">CMS 관리 대시보드</a></h1>
+        </div>
+        <ul>
+
+            <li><img src="{% static 'Management/img/reading-book (1).png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'Admin'%}">관리자</a></span></li>
+            <li><img src="{% static 'Management/img/reading-book (1).png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'Mypage'%}">마이페이지</a></span></li>
+            <li><img src="{% static 'Management/img/school.png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'ViewShelter'%}">쉘터</a></span></li>
+            <li><img src="{% static 'Management/img/dashboard (2).png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'ViewContent'%}">콘텐츠</a></span></li>
+            <li><img src="{% static 'Management/img/payment.png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'ViewAdvertisement'%}">광고</a></span> </li>
+            <li><img src="{% static 'Management/img/payment.png' %}" alt="">&nbsp; &nbsp;
+                <span><a style="color: white" href="{% url 'ViewCommunity'%}">커뮤니티</a></span></li>
+            <li><img src="{% static 'Management/img/help-web-button.png' %}" alt="">&nbsp; &nbsp;
+                <span>도움말</span></li>
+            <li><img src="{% static 'Management/img/settings.png' %}" alt="">&nbsp; &nbsp;
+                <span>설정</span> </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="{% static 'Management/img/search.png' %}" alt=""></button>
+                </div>
+                <div class="user">
+                    <a href="{% url 'Logout' %}" class="btn">로그아웃</a>
+                    <img src="{% static 'Management/img/notifications.png' %}" alt="">
+                    <div class="img-case">
+                        <img src="{% static 'Management/img/user.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-2">
+                <div class="recent-payments">
+                    <div class="title">
+                        <h2>커뮤니티 세부 정보</h2>
+                    </div>
+
+                    <div class = "infoBox">
+                        <div>번호 : {{community.id}}</div>
+                        <hr>
+                        <div>커뮤니티이름 : {{community.name}}</div>
+                        <hr>
+                        <div>연동쉘터 : {{community.shelterFK}}</div>
+                        <hr>
+                        <div>커뮤니티상태 : {{community.community_status}}</div>
+                        <hr>
+                        <div>등록일자 : {{community.createDate}}</div>
+                        <hr>
+                        <div>수정일자 : {{community.lastEditDate}}</div>
+                        <hr>
+                        <div>
+                            <div class="title">
+                                <h2> 커뮤니티 게시판 </h2>
+                            </div>
+
+                            <div class = "Board_title">
+                                <h3> 일상 게시판 </h3>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th style = "width:16%">아이디</th>
+                                    <th style = "width:16%">작성자메일</th>
+                                    <th style = "width:16%">내용</th>
+                                    <th style = "width:16%">업로드 이미지</th>
+                                    <th style = "width:16%">댓글상태</th>
+                                    <th style = "width:16%">상태변경</th>
+                                </tr>
+                                {%for daily_comment, daily_media_list in daily_ziplist %}
+                                <tr>
+                            <form method="POST" action="{% url 'UpdateCommentStatus' community.id daily_comment.id %}">
+                                {% csrf_token %}
+                                    <td>{{daily_comment.id}}</td>
+                                    <td>{{daily_comment.email}}</td>
+                                    <td style ="table-layout:fixed; word-break:break-all;">{{daily_comment.text}}</td>
+                                    <td>
+                                        {% if daily_media_list.image != "" %}
+                                        <img style = "width: 30%;" src="/media/{{daily_media_list.image}}">
+                                        {% else %}
+                                        <p>이미지없음</p>
+
+                                        {% endif %}
+                                    </td>
+                                    <td>{{daily_comment.comment_status}}</td>
+                                    <td>
+                                        <select name = "comment_auth">
+                                            <option>활성화</option>
+                                            <option>대기</option>
+                                            <option>반려</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="submit" value="권한변경" /></td>
+                                </form>
+                                </tr>
+                                {%endfor%}
+                            </table>
+                            <hr>
+                            <div class = "Board_title">
+                                <h3> 이슈 게시판 </h3>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th style = "width:16%">아이디</th>
+                                    <th style = "width:16%">작성자메일</th>
+                                    <th style = "width:16%">내용</th>
+                                    <th style = "width:20%">업로드 이미지</th>
+                                    <th style = "width:16%">댓글상태</th>
+                                    <th style = "width:16%">상태변경</th>
+                                </tr>
+
+                                {%for issue_comment, issue_media_list  in issue_ziplist %}
+                                <tr>
+                                    <form method="POST" action="{% url 'UpdateCommentStatus' community.id issue_comment.id %}">
+                                        {% csrf_token %}
+
+                                    <td>{{issue_comment.id}}</td>
+                                    <td>{{issue_comment.email}}</td>
+                                    <td style ="table-layout:fixed; word-break:break-all;">{{issue_comment.text}}</td>
+                                    <td>
+                                        {% if issue_media_list.image != "" %}
+                                        <img style = "width: 30%;" src="/media/{{issue_media_list.image}}">
+                                        {% else %}
+                                        <p>이미지없음</p>
+
+                                        {% endif %}
+                                    </td>
+                                    <td>{{issue_comment.comment_status}}</td>
+                                    <td>
+                                        <select name = "comment_auth">
+                                            <option>활성화</option>
+                                            <option>대기</option>
+                                            <option>반려</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="submit" value="권한변경" /></td>
+                                    </form>
+                                </tr>
+                                {%endfor%}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="{% static 'Management/js/adminDashboard.js' %}"></script>
+</body>
+</html>
