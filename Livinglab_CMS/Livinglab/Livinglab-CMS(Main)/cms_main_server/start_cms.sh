@@ -7,7 +7,7 @@ DEST=${IP}${PORT}
 
 echo $DEST
 
-cd "/root/LivingLab-CCS/Livinglab_CMS/Livinglab/Livinglab-CMS(Main)/cms_main_server"
+cd /root/LivingLab-CCS/Livinglab_CMS/Livinglab/Livinglab-CMS\(Main\)/cms_main_server
 
 pwd
 
