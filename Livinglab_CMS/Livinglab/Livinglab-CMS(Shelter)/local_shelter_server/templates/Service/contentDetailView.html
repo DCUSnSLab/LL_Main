@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <link href="{% static './assets/css/detail.css' %}" rel="stylesheet">
+        <link href="{% static './assets/css/button.css' %}" rel="stylesheet">
+        <link href="{% static './assets/css/recommend.css' %}" rel="stylesheet">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+
+    <body>
+<!--    전체 레이아웃 시작-->
+    <div id="wrap">
+<!--    헤더-->
+    <div class="container">
+	 <div class="w3-top" style="margin-left: -80px; right: 0px">
+             <div class="w3-bar w3-black w3-card" style="font-size: 30px;">
+                 <a href="{% url 'signage' %}" \
+                    class="w3-bar-item w3-button w3-padding-large" \
+                    style="justify-content: center;">BACK</a>
+                 <a href="#" \
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small" \
+                    style="justify-content: center;" >COMMUNITY</a>
+                 <a href="{% url 'Idle' %}" \
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small" \
+                    style="justify-content: center;" >Main</a>
+             </div>
+	</div>
+
+        <article class="no-pd" id="content" > </article>
+        <div class="headerBlock"></div>
+        <section id="section1" style="margin-top: 69px;">
+            <div class="container">
+                <p></p>
+
+                    <div id="div1">
+                            {% if content_info.contentType == "Image" %}
+                            <img id="picture"  style="height: 400px; width: 100%; object-fit: cover;"
+                                 src = "/media/{{description_info.upload_file}}" alt="NO Content">
+
+                            {% elif content_info.contentType == "Video" %}
+
+                            <video id="picture" style="height: 400px; width: 100%; object-fit: cover;" \
+                                   autoplay controls loop muted poster="https://cdn.pixabay.com/photo/2020/05/30/17/57/flower-5239814_960_720.jpg" preload="auto">
+                                <source src="/media/{{description_info.upload_file}}" type="video/mp4">
+                            </video>
+                            {% endif %}
+
+                    </div>
+
+            </div>
+        </section>
+        <div class="section" id="section2">
+            <div class="container">
+                <div class="row">
+                    <div class="img_box">
+                        <div class="title_box" style="margin-bottom: 3rem;">
+                            <h2 style="margin-left : 5px;  font-size: 50px; font-family: 'MinSans-Medium';"><strong>{{content_info.title}}</strong></h2>
+
+                            <span><h2 class="Recommand">조회수 {{contents_info.hits}} 회</h2></span>
+                            <span><h2 class="Recommand">추천수 {{contents_info.likes}} 회</h2></span>
+
+                            <div id="btn_group">
+                                <span>
+                                    <button id="test_btn1">
+                                        <a id = "likelink" href="{% url 'ContentLike' content_info.id %}">좋아요</a>
+                                        </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="img">
+                        {% for customUser in user_img %}
+                            <img class="profile_user_img" src = "/media/{{customUser.user_profile}}" alt ="No Content">
+                        {% endfor %}
+
+
+                            <div class="gray-line"></div>
+
+
+                            <div class="detail_contents" style="margin-left: 80px; margin-right: 70px;">
+                                <h4 style="margin-left: 10px; margin-right: 80px; font-size: 35px; font-family: 'MinSans-Medium'">작품소개</h4>
+                                <p style="margin-left: 10px; margin-right: 10px; font-size: 25px;">{{description_info.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--
+        <div class="section" id="section3"  >
+            <h3><strong>댓글 영역 : 댓글기능은 추후 지원될 예정입니다.</strong></h3>
+        </div>
+        -->
+    </div>
+
+    <script type="text/javascript">
+
+// Websocket connection - start
+// 웹 서버를 접속한다.
+var webSocket = new WebSocket("ws://203.250.33.53:9998");
+// 웹 서버와의 통신을 주고 받은 결과를 출력할 오브젝트를 가져옵니다.
+var messageTextArea = document.getElementById("messageTextArea");
+
+// 소켓 접속이 되면 호출되는 함수
+webSocket.onopen = function(message){
+    console.log("MediaServer connected.. with websocket..\n");
+    webSocket.send(globalVal);
+};
+// 소켓 접속이 끝나면 호출되는 함수
+webSocket.onclose = function(message){
+    console.log("MediaServer Disconnect...\n");
+};
+// 소켓 통신 중에 에러가 발생되면 호출되는 함수
+webSocket.onerror = function(message){
+    console.log("error...\n");
+};
+// 소켓 서버로 부터 메시지가 오면 호출되는 함수.
+webSocket.onmessage = function(message){
+// 출력 area에 메시지를 표시한다.
+    console.log("Recieve From MediaServer => "+message.data+"\n");
+};
+
+//서버 접속 끊
+function disconnect(){
+webSocket.close();
+}
+
+//자바스크립트에서 템플릿 태그로 그대로 로드할 시 escape 문자와 함께 출력 됨
+//이를 해결하기 위해 템플릿 태그 내 | safe 옵션을 붙이지만 json 형태로 변환할 수 없음
+//대신 .replace(/&#x27;/g, "\""); 통해 escape 문자 삭제 가능
+
+//현재 json으로 옮기는 도중 모든 객체를 가진 오브젝트는 json으로 변환이 되지 않는 것을 보았다
+//이는 특정 필드가 재대로 변환되지 않는다는 뜻
+
+//오브젝트 전체
+let rawdata = "{{content2server}}";
+console.log("rawdata", rawdata);
+
+// var content2server_dic = "{{content2server}}".replace(/&quot;/g, "\"");
+//     console.log("content2server_dic", content2server_dic);
+let content2server_dic = "{{content2server}}".replace(/&#x27;/g, "\"");
+//console.log("content2server_dic", content2server_dic);
+
+const content2server_Json = JSON.parse(content2server_dic);
+// console.log("content2server_Json", content2server_Json);
+
+// console.log("content2server_Json", content2server_Json[0]['id']);
+// console.log("content2server_Json", content2server_Json[0]['title']);
+// console.log("content2server_Json", content2server_Json[0]['upload_file']);
+
+let globalVal = content2server_Json[0]['upload_file']
+// console.log("미디어 서버 전송 데이터", content2server_Json["upload_file"]);
+//console.log("미디어 서버 전송 데이터", globalVal);
+    </script>
+    </body>
+</html>

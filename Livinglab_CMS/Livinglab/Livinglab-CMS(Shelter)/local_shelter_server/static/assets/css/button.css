@@ -1,0 +1,25 @@
+
+#test_btn1{ left : 100px;}
+#test_btn2{ margin-left:-3px; }
+
+
+#btn_group button{
+    border: 1px solid skyblue;
+    background-color: rgba(0,0,0,0);
+    color: skyblue; padding: 5px;
+}
+
+#btn_group button{
+    border: 1px solid black;
+    background-color: rgba(0,0,0,0);
+    color: black; padding: 5px;
+}
+
+#btn_group button:hover{
+    color:white;
+    background-color: blue;
+}
+
+#likelink{
+    text-decoration-line: none;
+}

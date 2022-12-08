@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <!-- css -->
+        <link href="{% static './assets/css/sigdesign.css' %}" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" >
+
+        <!-- js -->
+    </head>
+
+    <body>
+        <div id="wrap">
+            <header id="headerArea">
+                <div class="w3-top">
+                  <div class="w3-bar w3-black w3-card" style="font-size: 3vw; font-family: 'MinSans-Medium' !important;">
+                    <a href="{% url 'Idle' %}" class="w3-bar-item w3-button w3-padding-large" \
+                       style="justify-content: center;">MAIN</a>
+                    <a href="{% url 'community' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small" \
+                       style="justify-content: center;" >COMMUNITY</a>
+                  </div>                </div>
+
+            </header>
+            <div class="section" style="margin-top: 20px;">
+            <div class="section" id="section1">
+                <div class="nav_blank"></div>
+                <h3 class="imgText">이미지 콘텐츠</h3>
+                <div class="gray-line"></div>
+            <div class="container_media" style="position: relative">
+                     {% for image in img_list %}
+                    <a href="{% url 'contentDetailView' image.id %}">
+                        <span class="media_content_box" style="position: relative">
+                            <img class="media_preview" style="height: 100%; width: 100%; object-fit: cover;" src="/media/{{image.upload_file}}">
+                            <div class="imText2" style="left: 40px; bottom: -70px;">{{image.title}}</div>
+
+                            <span class="shadow_box">
+                                <div class="shadow"></div>
+                            </span>
+                        </span>
+                    </a>
+                    {%endfor%}
+                </div>
+                </div>
+
+
+<div class="gray-line"></div>
+                <h3 style="margin-left: 30px;">동영상 콘텐츠</h3>
+                <div class="gray-line"></div>
+                <div class="container_media" style="position: relative">
+                     {% for video in vod_list %}
+                    <a href="{% url 'contentDetailView' video.id %}">
+                        <span class="media_content_box" style="position: relative">
+                            <img class="media_preview" style="height: 100%; width: 100%; object-fit: cover;" src="/media/{{video.thumbnailPath}}">
+                            <div class="imText2" style="left: 40px; bottom: -70px;">{{video.title}}</div>
+
+                            <span class="shadow_box">
+                                <div class="shadow"></div>
+                            </span>
+                        </span>
+                    </a>
+                    {%endfor%}
+                </div>
+<div class="gray-line"></div>
+                <div class="container_media" style="position: relative">
+                    <div></div>
+                    <div>
+
+                        <div style="text-align: center">
+                            <div><h3 style="padding-left: 40px;">QR코드를 찍어 콘텐츠 업로드!</h3></div>
+                        <img src = "/media/{{contentQR}}">
+                        </div>
+
+
+                    </div>
+
+                    <div></div>
+                </div>
+                </div>
+
+        <script type="text/javascript"></script>
+    </body>
+</html>

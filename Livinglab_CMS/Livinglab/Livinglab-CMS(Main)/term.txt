@@ -1,0 +1,19 @@
+
+장고 모델 용어
+
+related_name : 추상 모델에서 관계를 정의할 때 사용될 이름을 의미합니다.
+참고링크
+- https://fabl1106.github.io/django/2019/05/27/Django-26.-%EC%9E%A5%EA%B3%A0-related_name-%EC%84%A4%EC%A0%95%EB%B0%A9%EB%B2%95.html
+
+on_delete : 외래키(ForeignKey)가 바라보는 테이블의 값이 삭제될 때 수행할 방법을 지정합니다.
+    - models.CASCADE	외래키를 포함하는 행도 함께 삭제
+    - models.PROTECT	해당 요소가 함께 삭제되지 않도록 오류 발생 (ProtectedError)
+    - models.SET_NULL	외래키 값을 NULL 값으로 변경 (null=True일 때 사용 가능)
+    - models.SET(func)	외래키 값을 func 행동 수행 (func는 함수나 메서드 등을 의미)
+    - models.DO_NOTHING	아무 행동을 하지 않음
+
+참고링크
+- https://076923.github.io/posts/Python-Django-11/
+- https://fabl1106.github.io/django/2019/05/27/Django-26.-%EC%9E%A5%EA%B3%A0-related_name-%EC%84%A4%EC%A0%95%EB%B0%A9%EB%B2%95.html
+
+db_column :  테이블에 정의될 이름을 의미합니다. 만약, db_column 매개변수를 사용하지 않는다면, 모델 변수 명 + id가 다시붙는다.

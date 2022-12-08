@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="description" name="description">
+    <meta name="google" content="notranslate" />
+    <meta content="Mashup templates have been developped by Orson.io team" name="author">
+    <meta name="msapplication-tap-highlight" content="no">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="{% static './assets/main.82cfd66e.css' %}" rel="stylesheet">
+        <link href="{% static './assets/mycss.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static './assets/paintingstyles.css' %}">
+        <title>paint</title>
+    </head>
+    <body>
+     <div class="w3-top">
+      <div class="w3-bar w3-black w3-card">
+        <a href="{% url 'Idle' %}" class="w3-bar-item w3-button w3-padding-large">GALLERY</a>
+        <a href="{% url 'signage' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">COMMUNITY</a>
+      </div>
+    </div>
+     <div class="my_center">
+         <img id="jsCanvas" class="canvas" width="700" height="700" src="/{{Picture.path}}">
+     </div>
+    </body>
+</html>

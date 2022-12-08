@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+
+    </head>
+
+    <body>
+
+    {% for comment in comments %}
+        <div>{{comment.text}}</div>
+        <img class="media_preview" style="width: 100px; height: 80px;
+        object-fit: cover;" src="/media/{{comment.image}}"
+        alt="첨부이미지 없음">
+    {%endfor%}
+
+    </body>
+</html>

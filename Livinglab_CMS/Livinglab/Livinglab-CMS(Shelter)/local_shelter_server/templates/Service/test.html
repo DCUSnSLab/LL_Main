@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+hiasdasdasd
+
+<div>
+
+<img class="fit-picture"
+     src="/media/Contents/CID-1/Image/Screenshot_20220804-024816_YouTube.jpg">
+
+    <img class="fit-picture"
+     src="../../../media/Contents/CID-1/Image/Screenshot_20220804-024816_YouTube.jpg">
+
+    {% for content in test %}
+        {{content.upload_file}}
+        {{content.thumbnailPath}}
+    <img src="/media/{{content.thumbnailPath}}">
+
+    {% endfor %}
+</div>
+</body>
+</html>

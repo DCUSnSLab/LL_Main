@@ -1,0 +1,63 @@
+수퍼계정
+python manage.py createsuperuser;
+id : master
+pw : master
+email : du137532@cu.ac.kr
+
+일반계정
+id : test1
+pw : test1
+템플릿 적용
+asset(혹은 다른이름)
+ - js
+ - css
+ - img
+를 myproject/myproject/static에 넣기
+
+메인페이지(index.html)
+을 templates 폴더에 넣기 -> 선택가능한 템플릿이 됨
+
+장고 템플릿과 연동해야함
+asset에 있는 정적파일은 모두 static으로 옮겼으므로 경로를 {%static 'asset/..../ '%}으로설정
+
+base.html의 {% %} 태그를 모두 적용
+
+settings.py 수정
+커스텀 템플릿을 적용하기 위해 CMS_TEMPLATES에 해당 템플릿추가
+
+이상태에서 페이지에 템플릿을 적용하여 쓸 수 있지만 메뉴바에 접근하지 못함
+{% show_menu 0 100 100 100 %} 추가 -> 생성한 페이지를 이동할 수 있다
+
+플러그인 적용
+현재 템플릿이 적용된 페이지는 플러그인을 사용할 수 없다
+탬플릿 내 추가
+{% block content %}
+            {%placeholder "content"%}
+            {% endblock content %}
+
+placeholder 1개 당 플러그인 기능 1개씩 사용가능
+태그 곧곧에 배치하여 넣을 수 있다
+
+별도로 플러그인을 생성하여 적용할 수 있음
+
+
+mysql
+db : djangoCMS
+user : CMSadmin
+pw : 0110
+
+django-mysql 연동
+python manage.py makemigrations
+python manage.py migrate
+
+test 연동 추가
+
+FFMEPG 설치
+# ffmpeg 설치
+# sudo apt install ffmpeg
+
+python ffmpeg-videostreaming 설치
+pip install python-ffmpeg-video-streaming
+
+mysql 들어가기
+mysql -u root -p

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>게시판 의견 달기</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="icon" href="assets/img/favicon.ico">
+
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+
+        <!-- Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="{% static './assets/css/mediumish.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    </head>
+<body>
+
+<!-- NAVBAR -->
+<div class="container">
+	 <div class="w3-top" style="margin-left: -80px; right: 0px; ">
+             <div class="w3-bar w3-black w3-card"></div>
+	</div>
+
+<!-- Page Title -->
+<div class="container" >
+	<div class="mainheading">
+		<h1 class="sitetitle">Please, Add the Comments!</h1>
+		<p class="lead"></p>
+	</div>
+
+    <section class="featured-posts">
+        <div class="section-title">
+		<h2><span></span></h2>
+        </div>
+        <section class="containerbox">
+                  <form method="POST" enctype="multipart/form-data" action="{% url 'AddCommunityComment' shelter.id %}">
+                {% csrf_token %}
+                      <div>게시판 종류</div>
+                      <div>{{form.boardType}}</div>
+                      <hr>
+                      <div>텍스트 입력</div>
+                      <div>{{form.text}}</div>
+                      <hr>
+                      <div>이미지 첨부</div>
+                      <div><h6>* 이미지확장자는 jpg, jpeg, png 만 가능</h6></div>
+                      <div>{{media_form.image}}</div>
+                      <hr>
+                      <div>이메일 입력(선택사항)</div>
+                      <div>{{form.email}}</div>
+
+                      <div class="back_submit_choice_container" style="float: right">
+                        <input type="submit" class="btn btn-primary col-12" style="cursor: pointer; border-radius: 10px; width: 70px; bottom: 10px;" value="제출">
+                    </div>
+                </form>
+        </section>
+    </section>
+
+	<!-- Begin Footer -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2022 CMS
+		</p>
+		<p class="pull-right">
+			 Developed by <a target="_blank" href="http://snslab.cu.ac.kr">SNSLab</a>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+</div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+
+</body>
+</html>
+
