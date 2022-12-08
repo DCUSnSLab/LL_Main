@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'cms_main_server.wsgi.application'
 DATABASES = {
     'default': {
         'CONN_MAX_AGE': 0,
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
-        'NAME': 'cms_main_server_09',
-        'PASSWORD': '0110',
-        'PORT': '3306',
-        'USER': 'main_09'
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'cms_main_db',
+        'NAME': 'cms_main_server',
+        'PASSWORD': '20121208',
+        'PORT': '5432',
+        'USER': 'main'
     }
 }
 
