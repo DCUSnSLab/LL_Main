@@ -31,8 +31,11 @@ def MakeQRcode(id):
     serverIP = GetcurrentIP()
     port_number = str(8000)
 
-    contentQR = "http://" + serverIP + ":" + port_number + "/Userservice/UploadContent/" + str(id)
-    communityQR = "http://" + serverIP + ":" + port_number + "/Userservice/AddCommunityComment/" + str(id)
+    contentQR = "http://" + os.environ['HOST_IP'] + ":" + port_number + "/Userservice/UploadContent/" + str(id)
+    communityQR = "http://" + os.environ['HOST_IP'] + ":" + port_number + "/Userservice/AddCommunityComment/" + str(id)
+
+    #contentQR = "http://" + serverIP + ":" + port_number + "/Userservice/UploadContent/" + str(id)
+    #communityQR = "http://" + serverIP + ":" + port_number + "/Userservice/AddCommunityComment/" + str(id)
 
     # http://203.250.33.53:8000/Content/2 http://203.250.33.53:8000/Community/2
     # print("QR address ", contentQR, communityQR)
