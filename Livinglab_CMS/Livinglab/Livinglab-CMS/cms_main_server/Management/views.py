@@ -100,7 +100,8 @@ def AdminChange(request, id):
 
         auth = request.POST['user_auth']
         # admin = CustomUser.objects.filter(id=id).values('user_auth', 'user_status')
-        admin = CustomUser.objects.get(id=id)
+        print("id :", id)
+        admin = CustomUser.objects.get(user_id=id)
         print(admin, id)
 
         if auth == "활성화":
