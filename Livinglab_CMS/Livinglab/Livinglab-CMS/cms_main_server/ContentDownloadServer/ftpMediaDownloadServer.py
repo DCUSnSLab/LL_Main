@@ -5,7 +5,8 @@ from pyftpdlib.authorizers import DummyAuthorizer
 from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
 
-FTP_HOST = '203.250.33.53'
+# FTP_HOST = '203.250.33.53'
+FTP_HOST = os.environ['CMS_MAIN_IP']
 FTP_PORT = 9021
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
