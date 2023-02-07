@@ -27,12 +27,17 @@ def main():
     handler.authorizer = authorizer
     handler.passive_ports = range(60000, 65535)
 
-    address = (FTP_HOST, FTP_PORT)
+    print(FTP_HOST, FTP_PORT)
+    address = ('172.19.0.5', FTP_PORT)
+    # address = (FTP_HOST, FTP_PORT)
+    print("address")
     server = FTPServer(address, handler)
 
+    print("max_cons")
     server.max_cons = 256
     server.max_cons_per_ip = 5
 
+    print("serve_forever")
     server.serve_forever()
 
 if __name__ == '__main__':
