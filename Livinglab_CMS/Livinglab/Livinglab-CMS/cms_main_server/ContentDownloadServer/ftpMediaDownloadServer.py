@@ -1,5 +1,6 @@
 # ftp_server_auth.py
 import os
+import netifaces as ni
 
 from pyftpdlib.authorizers import DummyAuthorizer
 from pyftpdlib.handlers import FTPHandler
@@ -7,6 +8,7 @@ from pyftpdlib.servers import FTPServer
 
 # FTP_HOST = '203.250.33.53'
 FTP_HOST = os.environ['HOST_IP']
+FTP_MACHINE = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
 FTP_PORT = 9021
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -27,8 +29,7 @@ def main():
     handler.authorizer = authorizer
     handler.passive_ports = range(60000, 65535)
 
-    print(FTP_HOST, FTP_PORT)
-    address = ('172.19.0.5', FTP_PORT)
+    address = (FTP_MACHINE, FTP_PORT)
     # address = (FTP_HOST, FTP_PORT)
     print("address")
     server = FTPServer(address, handler)
