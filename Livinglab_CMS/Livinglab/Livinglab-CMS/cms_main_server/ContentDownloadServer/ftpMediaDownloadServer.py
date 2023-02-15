@@ -27,7 +27,7 @@ def main():
     handler.banner = "CMS FTP Media Server."
 
     handler.authorizer = authorizer
-    handler.passive_ports = range(60000, 65535)
+    handler.passive_ports = range(9999, 10000)
 
     address = (FTP_MACHINE, FTP_PORT)
     # address = (FTP_HOST, FTP_PORT)
