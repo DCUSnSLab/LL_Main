@@ -33,8 +33,5 @@ echo "from django.contrib.auth.models import User; User.objects.create_superuser
 # Add admin user to custom user
 
 # Start server
-python3 manage.py runserver $DEST
-
-# cd /root/LivingLab-CCS/server/ContentDownloadServer
-
-# python3 ftpMediaDownloadServer.py &
+python3 manage.py runserver $DEST &
+python3 ContentDownloadServer/ftpMediaDownloadServer.py
