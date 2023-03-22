@@ -21,7 +21,8 @@ do
 		python3 manage.py migrate # migrate database
 		break # and brack while loop
 	else
-		echo "else"
+		echo "Not detec main database server..."
+		sleep 3s
 	fi
 done
 
