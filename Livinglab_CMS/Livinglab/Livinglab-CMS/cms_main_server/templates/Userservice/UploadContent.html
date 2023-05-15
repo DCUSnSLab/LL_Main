@@ -48,12 +48,14 @@
                   <form method="POST" enctype="multipart/form-data" action="{% url 'UploadContent' shelter.id %}">
                 {% csrf_token %}
                       <div>콘텐츠 이름</div>
+                      <br/>
                       <div>{{form.title}}</div>
                       <hr>
                       <div>업로드</div>
                       <div><h6>* 업로드 승인 시 작성한 이메일로 승인 메일이 보내집니다.</h6></div>
                       <div><h6>* 이미지확장자는 jpg, jpeg, png 가능, 비디오확장자는 mp4 가능</h6></div>
                       <div>{{addition_form.upload_file}}</div>
+                      <hr>
                       <hr>
                       <div>콘텐츠 설명(선택사항)</div>
                       <div>{{addition_form.description}}</div>
