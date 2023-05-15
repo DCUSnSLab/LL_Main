@@ -48,7 +48,7 @@ class Shelter(models.Model):
     title = models.CharField(max_length=50, null=True)  # 이름
     shelter_description = models.TextField(max_length=500, blank=True, null=True, default="여기에 입력 하시오.")
     shelter_status = models.CharField(max_length=20, choices=STATUS, null=True, default="대기") #상태
-
+   
     add_states = models.CharField(max_length=50, null=True)  # 도/시
     add_city = models.CharField(max_length=50, null=True) # 시/군/구
     add_town = models.CharField(max_length=50, null=True) # 읍/면/동
@@ -194,13 +194,23 @@ class Advertisement_media(models.Model):
     advertisementFK = models.ForeignKey(Advertisement, on_delete=models.CASCADE,
                                   db_column="advertisementFK", null=True, blank=True, related_name='Ad_Media')
 
+CONTENT_TYPE = (
+    ('영상', 'Video'),
+    ('사진', 'Image'),
+)
+
 class Content(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, null=True)
-    email = models.EmailField(max_length=128, verbose_name="사용자 이메일", null=True, blank=True)
-
+    email = models.EmailField(max_length=128, verbose_name="사용자 이메일", null=False, blank=True)
+    
+    phonenum = models.TextField(nul=True) # 연락처
+    author = models.TextField(max_length=30, null=False) # 작자명
+    disclosure_status = models.BooleanField(default=False) # 공개여부 체크박스
+    confirmation_use_information_status = models.BooleanField(default=False) # 정보 이용 동의 체크박스
+ 
     content_status = models.CharField(max_length=5, null=True, default="대기")  # 상태
-    contentType = models.CharField(max_length=10, null=True)
+    contentType = models.CharField(max_length=10, null=True, choices=CONTENT_TYPE)
     hits = models.DecimalField(max_digits=11, decimal_places=0, default=0, null=True)   # 조회수
     likes = models.DecimalField(max_digits=11, decimal_places=0, default=0, null=True)   # 좋아요수
 
