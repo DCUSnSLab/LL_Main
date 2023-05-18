@@ -21,6 +21,8 @@ class UploadContentForm(forms.ModelForm):
         model = Content
         fields = ['title',
                   'email',
+                  'author',
+                  'phonenum'
                   ]
 
 class AddContentDescriptionForm(forms.ModelForm):

@@ -98,10 +98,10 @@ def UploadContent(request, id):
 
             title = form.cleaned_data.get('title')
             email = form.cleaned_data.get('email')
+            author = form.cleaned_data.get('author')
+            phonenum = form.cleaned_data.get('phonenum')
             upload_file = addition_form.cleaned_data.get('upload_file')
             description = addition_form.cleaned_data.get('description')
-
-            print("데이터 확인", title, email, upload_file, description)
 
             content = form.save(commit=False)
             content.shelterFK = shelter
