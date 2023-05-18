@@ -47,8 +47,21 @@
         <section class="containerbox">
                   <form method="POST" enctype="multipart/form-data" action="{% url 'UploadContent' shelter.id %}">
                     {% csrf_token %}
-                    <div>작자명</div>
-                    <div>{{form.author}}</div>
+                    <div>
+                        <label for = "author">작자명 : </label>
+                        <input type="text" id = "author" placeholder="작자명을 입력하세요." name="author">
+                    </div>
+
+                    <div>
+                        <label for = "title">콘텐츠 이름 : </label>
+                        <input type="text" id = "title" placeholder="콘텐츠이름을 입력하세요." name="title">
+                    </div>
+
+                    <div>
+                        <label for = "phonenum">연락처 : </label>
+                        <input type="text" id = "phonenum" placeholder="연락처를 입력하세요." name="phonenum">
+                    </div>
+
 
                     <div>콘텐츠 이름</div>
                     <div>{{form.title}}</div>
