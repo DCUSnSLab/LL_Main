@@ -23,7 +23,7 @@
         <link href="{% static './assets/css/mediumish.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+        
     </head>
 <body>
 
@@ -47,40 +47,30 @@
         <section class="containerbox">
                   <form method="POST" enctype="multipart/form-data" action="{% url 'UploadContent' shelter.id %}">
                     {% csrf_token %}
-                    <div>
-                        <label for = "author">작자명 : </label>
-                        <input type="text" id = "author" placeholder="작자명을 입력하세요." name="author">
-                    </div>
-
-                    <div>
-                        <label for = "title">콘텐츠 이름 : </label>
-                        <input type="text" id = "title" placeholder="콘텐츠이름을 입력하세요." name="title">
-                    </div>
-
-                    <div>
-                        <label for = "phonenum">연락처 : </label>
-                        <input type="text" id = "phonenum" placeholder="연락처를 입력하세요." name="phonenum">
-                    </div>
-
+                    <div>작자명</div>
+                    <div class="user-input">{{form.author}}</div>
+                  </br>
+                    <div>이메일 입력(선택사항)</div>
+                    <div class="user-input">{{form.email}}</div>
 
                     <div>콘텐츠 이름</div>
-                    <div>{{form.title}}</div>
+                    <div class="user-input">{{form.title}}</div>
                     
-                    <div>전화번호</div>
-                    <div>{{form.phonenum}}</div>
+                    <div>콘텐츠 설명(선택사항)</div>
+                    <div class="user-input">{{addition_form.description}}</div>
 
+  
                     <hr>
                     <div>업로드</div>
                     <div><h6>* 업로드 승인 시 작성한 이메일로 승인 메일이 보내집니다.</h6></div>
                     <div><h6>* 이미지확장자는 jpg, jpeg, png 가능, 비디오확장자는 mp4 가능</h6></div>
                     <div>{{addition_form.upload_file}}</div>
                     <hr>
-                    <div>콘텐츠 설명(선택사항)</div>
-                    <div>{{addition_form.description}}</div>
-                    <hr>
-                    <div>이메일 입력(선택사항)</div>
-                    <div>{{form.email}}</div>
+                    
+                    <div>전화번호</div>
+                    <div class="user-input">{{form.phonenum}}</div>
 
+                    <hr>
                     <div class="back_submit_choice_container" style="float: right">
                         <input type="submit" class="btn btn-primary col-12" style="cursor: pointer; border-radius: 10px; width: 70px; bottom: 10px;" value="제출">
                     </div>
