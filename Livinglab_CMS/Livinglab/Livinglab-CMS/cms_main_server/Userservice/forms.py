@@ -22,7 +22,9 @@ class UploadContentForm(forms.ModelForm):
         fields = ['title',
                   'email',
                   'author',
-                  'phonenum'
+                  'phonenum',
+                  'disclosure_status',
+                  'confirmation_use_information_status'
                   ]
 
 class AddContentDescriptionForm(forms.ModelForm):

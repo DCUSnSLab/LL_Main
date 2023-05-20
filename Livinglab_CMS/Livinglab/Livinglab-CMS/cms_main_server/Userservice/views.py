@@ -100,9 +100,15 @@ def UploadContent(request, id):
             email = form.cleaned_data.get('email')
             author = form.cleaned_data.get('author')
             phonenum = form.cleaned_data.get('phonenum')
+            disclosure_status = form.cleaned_data.get('disclosure_status')
+            confirmation_use_information_status = form.cleaned_data.get('confirmation_use_information_status')
+            
             upload_file = addition_form.cleaned_data.get('upload_file')
             description = addition_form.cleaned_data.get('description')
-
+            
+            
+            
+            
             content = form.save(commit=False)
             content.shelterFK = shelter
 
