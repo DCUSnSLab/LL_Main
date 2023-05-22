@@ -76,7 +76,12 @@
 	</div>
 
     <div class="mainheading">
-		<h2 class="sitetitle">현재 쉘터 위치 : </h1>
+		  <h2 class="sitetitle">현재 쉘터 위치</h2>
+      <div> 도/시 : {{ shelter.add_states}} </div>
+      <div> 시/군/구 : {{ shelter.add_city}} </div>
+      <div> 읍/면/동 : {{ shelter.add_town}} </div>
+      <div> 나머지 상세주소 : {{ shelter.add_last}} </div>
+    
 		<p class="lead"></p>
 	</div>
 
@@ -107,15 +112,18 @@
                     
                     <div>전화 번호</div>
                     <div class="user-input">{{form.phonenum}}</div>
-
-                    <div>공개 여부 확인</div>
-                    <div class="user-input">{{form.disclosure_status}}</div>
-                    <div><h6>* 작품 공개 승인 결과는 이메일로 전달됩니다.</h6></div>
-
-                    <div>개인 정보 수집 및 이용 동의서 확인</div>
-                    <div class="user-input">{{form.confirmation_use_information_status}}</div>
+                    <div>
+                      <span>공개 여부 확인</span>
+                      <span class="user-input">{{form.disclosure_status}}</span>
+                      <div><h6>* 작품 공개 승인 결과는 이메일로 전달됩니다.</h6></div>
+                    </div>
+                    <hr>
+                    <div>
+                      <span>개인 정보 수집 및 이용 동의서 확인</span>
+                      <span class="user-input">{{form.confirmation_use_information_status}}</span>
+                    </div>
+                    </br>
                     <button id="openModalBtn">동의서 확인하기</button>
-                    
                     <div id="myModal" class="modal">
                         <div class="modal-content">
                           <span class="close">&times;</span>

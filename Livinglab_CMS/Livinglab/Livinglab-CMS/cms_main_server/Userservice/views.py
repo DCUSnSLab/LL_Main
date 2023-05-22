@@ -106,8 +106,10 @@ def UploadContent(request, id):
             upload_file = addition_form.cleaned_data.get('upload_file')
             description = addition_form.cleaned_data.get('description')
             
-            
-            
+            shelter_states = shelter.add_states
+            shelter_city = shelter.add_city
+            shelter_town = shelter.add_town
+            shelter_last = shelter.add_last
             
             content = form.save(commit=False)
             content.shelterFK = shelter
@@ -166,14 +168,16 @@ def UploadContent(request, id):
 
             return redirect('UploadContent', shelter.id)
     else:
-
+        
         form = UploadContentForm()
         addition_form = AddContentDescriptionForm()
-
+        shelterlocation_form = ShowShelterLocationForm()
+        
     context = {
         'form': form,
         'addition_form': addition_form,
-        'shelter': shelter
-    }
+        'shelter': shelter,
+        'shelterlocation_form' : shelterlocation_form
+        }
 
     return render(request, 'Userservice/UploadContent.html', context)

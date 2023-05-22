@@ -1,6 +1,6 @@
 from django import forms
 from Management.models import Comment, Comment_media, \
-    Content, Content_Description
+    Content, Content_Description, Shelter
 
 class AddCommentForm(forms.ModelForm):
     class Meta:
