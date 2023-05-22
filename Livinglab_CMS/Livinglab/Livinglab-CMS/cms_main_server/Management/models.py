@@ -72,6 +72,7 @@ class Shelter_media(models.Model):
                                        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])])
     contentQR = models.CharField(max_length=200, null=True)
     communityQR = models.CharField(max_length=200, null=True)
+    advertisementQR = models.CharField(max_length=200, null=True)
 
     shelterFK = models.ForeignKey(Shelter, on_delete=models.CASCADE, db_column="shelterFK", null=True, blank=True)
 
