@@ -330,14 +330,20 @@ def RegisterShelter(request):
 
 
             # 쉘터 QR 코드 생성 및 경로 저장
-            contSavePath, comSavePath = utility.MakeQRcode(shelter.id)
+            contSavePath, comSavePath, adSavePath = utility.MakeQRcode(shelter.id)
 
             contSavePathSplit = contSavePath.split('/media/')
             comSavePathSplit = comSavePath.split('/media/')
-            print("asdasd", contSavePathSplit[1], comSavePathSplit[1])
+            adSavePathSplit = adSavePath.split('/media/')
+            print(contSavePathSplit)
+            print(comSavePathSplit)
+            print(adSavePathSplit)
+            
 
             shelter_media.contentQR = contSavePathSplit[1]
             shelter_media.communityQR = comSavePathSplit[1]
+            shelter_media.advertisementQR = adSavePathSplit[1]
+            
 
             shelter_media.save()
 
