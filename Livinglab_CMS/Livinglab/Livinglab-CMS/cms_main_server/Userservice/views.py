@@ -171,13 +171,11 @@ def UploadContent(request, id):
         
         form = UploadContentForm()
         addition_form = AddContentDescriptionForm()
-        shelterlocation_form = ShowShelterLocationForm()
         
     context = {
         'form': form,
         'addition_form': addition_form,
         'shelter': shelter,
-        'shelterlocation_form' : shelterlocation_form
         }
 
     return render(request, 'Userservice/UploadContent.html', context)
