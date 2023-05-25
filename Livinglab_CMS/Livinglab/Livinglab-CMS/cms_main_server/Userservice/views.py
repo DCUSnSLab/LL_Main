@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 
 from Management.models import Shelter, Community, Daily_Board, Issue_Board, Comment, \
-    Content
+    Content, Advertisement, Advertisement_media
 
 from .forms import AddCommentForm, AddCommentMediaForm, \
-UploadContentForm, AddContentDescriptionForm
+UploadContentForm, AddContentDescriptionForm, UploadAdForm, UploadAdMediaForm
 
 from Utility import utility
 
@@ -171,3 +171,63 @@ def UploadContent(request, id):
     }
 
     return render(request, 'Userservice/UploadContent.html', context)
+
+@method_decorator(csrf_exempt, name='dispatch')
+def UploadAdvertisement(request, id):
+    '''
+    이 업로드 Form은 Management/views.py 에 명시된 광고 업로드 폼과는 기능적으로 동일하나 별개의 역할을 수행합니다.
+    Management의 광고 업로드는 관리자 전용,
+    해당 Form은 QR코드를 통해 접근하는 사용자 전용입니다.
+    '''
+    shelter = Shelter.objects.get(id=id)
+
+    if request.method == 'POST':
+
+        form = UploadAdForm(request.POST)
+        media_form = UploadAdMediaForm(request.POST , request.FILES)
+
+        # print(form.is_valid(), addition_form.is_valid())
+        if form.is_valid() and media_form.is_valid():
+
+            name = form.cleaned_data.get('name')
+            adType = form.cleaned_data.get('adType')
+            company = form.cleaned_data.get('company')
+            advertiser = form.cleaned_data.get('advertiser')
+            email = form.cleaned_data.get('email')
+            phone = form.cleaned_data.get('phone')
+            advertisement_auth = request.POST['advertisement_auth']  # form 데이터 아님
+            shelter = request.POST['shelter_list']  # form 데이터 아님
+            content = media_form.cleaned_data.get('content')
+
+            advertisement = form.save(commit=False)
+            advertisement.advertisement_status = advertisement_auth
+
+            advertisement.shelterFK = shelter
+
+            advertisement.save()
+
+            advertisement_media = media_form.save(commit=False)
+            advertisement_id = Advertisement.objects.last()
+            advertisement_media.advertisementFK = advertisement_id
+
+            file = str(media_form.cleaned_data.get('content'))
+
+            fname, fType = utility.FileTypeCheck(file)
+            advertisement_media.type = fType
+            advertisement_media.save()
+
+            # print("콘텐츠 업로드 완료")
+
+            return redirect('UploadAd', shelter.id)
+    else:
+
+        form = UploadAdForm()
+        media_form = UploadAdMediaForm()
+
+    context = {
+        'form': form,
+        'media_form': media_form,
+        'shelter': shelter
+    }
+
+    return render(request, 'Userservice/UploadAd.html', context)

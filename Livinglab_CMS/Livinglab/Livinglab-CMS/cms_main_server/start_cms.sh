@@ -11,6 +11,10 @@ cd /root/LivingLab-CCS/Livinglab_CMS/Livinglab/Livinglab-CMS/cms_main_server
 
 pwd
 
+# Create migrations
+
+python3 manage.py makemigrations
+
 # Check db container connection
 while :
 do

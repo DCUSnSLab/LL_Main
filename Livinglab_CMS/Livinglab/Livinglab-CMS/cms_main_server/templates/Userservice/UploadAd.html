@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>광고 업로드</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="icon" href="assets/img/favicon.ico">
+
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+
+        <!-- Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="{% static './assets/css/mediumish.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    </head>
+<body>
+
+<!-- NAVBAR -->
+<div class="container">
+	 <div class="w3-top" style="margin-left: -80px; right: 0px; ">
+             <div class="w3-bar w3-black w3-card"></div>
+	</div>
+
+<!-- Page Title -->
+<div class="container" >
+	<div class="mainheading">
+		<h1 class="sitetitle">Please, Upload your life!</h1>
+		<p class="lead"></p>
+	</div>
+
+    <section class="featured-posts">
+        <div class="section-title">
+		<h2><span></span></h2>
+        </div>
+        <section class="containerbox">
+            <form method="POST" enctype="multipart/form-data" action="{% url 'RegisterAdvertisement' %}">
+                {% csrf_token %}
+              <div>광고명 : {{form.name}}</div>
+              <hr>
+              <div>광고타입 : {{form.adType}}</div>
+              <hr>
+              <div>광고주 : {{form.company}}</div>
+              <hr>
+              <div>광고관계자 : {{form.advertiser}}</div>
+              <hr>
+              <div>관계자 이메일 : {{form.email}}</div>
+              <hr>
+              <div>관계자 연락처 : {{form.phone}}</div>
+              <hr>
+              <div>
+                  광고 상태 &nbsp; &nbsp;
+                  <select name = "advertisement_auth">
+                      <option>활성화</option>
+                      <option>대기</option>
+                      <option>정지</option>
+                  </select>
+              </div>
+              <hr>
+              <div>광고 콘텐츠 업로드 : {{media_form.content}}</div>
+              <hr>
+              <div style="float: left">
+                  <input type="submit" class="btn btn-primary col-12" style="cursor: pointer; border-radius: 10px; width: 60px; bottom: 10px;" value="등록">
+                  <a class="btn btn-primary col-12" style="border-radius: 10px; width: 60px; bottom: 10px;" href="{% url 'ViewAdvertisement'%}">취소</a>
+              </div>
+            </form>
+        </section>
+    </section>
+
+	<!-- Begin Footer -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2022 CMS
+		</p>
+		<p class="pull-right">
+			 Developed by <a target="_blank" href="http://snslab.cu.ac.kr">SNSLab</a>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+</div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+
+</body>
+</html>
+
