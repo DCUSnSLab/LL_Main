@@ -372,6 +372,7 @@ def ShowDetailShelter(request, id):
     print("자세히 페이지")
 
     shelter = Shelter.objects.get(id=id)
+    
     shelter_media = Shelter_media.objects.get(id=id)
 
     print(shelter, shelter_media)

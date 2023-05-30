@@ -33,6 +33,7 @@ def MakeQRcode(id):
 
     contentQR = "http://" + os.environ['HOST_IP'] + ":" + port_number + "/Userservice/UploadContent/" + str(id)
     communityQR = "http://" + os.environ['HOST_IP'] + ":" + port_number + "/Userservice/AddCommunityComment/" + str(id)
+    advertisementQR = "http://" + os.environ['HOST_IP'] + ":" + port_number + "/Management/RegisterAdvertisement/" + str(id)
 
     #contentQR = "http://" + serverIP + ":" + port_number + "/Userservice/UploadContent/" + str(id)
     #communityQR = "http://" + serverIP + ":" + port_number + "/Userservice/AddCommunityComment/" + str(id)
@@ -42,19 +43,22 @@ def MakeQRcode(id):
 
     contentQR_img = qrcode.make(contentQR)
     communityQR_img = qrcode.make(communityQR)
+    adQR_img = qrcode.make(advertisementQR)
 
     contSavePath = MEDIA_ROOT+"/ShelterQR/Content/"+"Shelter_"+str(id)+"/"
     comSavePath = MEDIA_ROOT + "/ShelterQR/Community/" + "Shelter_" + str(id) + "/"
-
+    adSavePath = MEDIA_ROOT + "/ShelterQR/adverisement/" + "Shelter_" + str(id) + "/"
     # print(contSavePath, comSavePath)
 
     createDirectory(contSavePath)
     createDirectory(comSavePath)
+    createDirectory(adSavePath)
 
     contentQR_img.save(contSavePath + "contentQR.jpg")
     communityQR_img.save(comSavePath + "communityQR.jpg")
+    adQR_img.save(adSavePath + "advertisementQR.jpg")
 
-    return contSavePath + "contentQR.jpg", comSavePath + "communityQR.jpg"
+    return contSavePath + "contentQR.jpg", comSavePath + "communityQR.jpg", adSavePath + "advertisementQR"
 
 def FileTypeCheck(file):
     name, ext = os.path.splitext(file)
