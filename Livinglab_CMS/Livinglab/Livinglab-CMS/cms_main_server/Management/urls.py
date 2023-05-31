@@ -33,11 +33,7 @@ urlpatterns = [
     path('UpdateAdvertisementStatus/<int:id>', views.UpdateAdvertisementStatus, name='UpdateAdvertisementStatus'),
 
     path('ViewContent/', views.ViewContent, name='ViewContent'),
-    path('UpdateContentStatus/<int:id>', views.UpdateContentStatus, name='UpdateContentStatus'),
     path('ShowDetailContent/<int:id>', views.ShowDetailContent, name='ShowDetailContent'),
-
-
-
-
-
+    path('DeleteContent/<int:id>', views.DeleteContent, name='DeleteContent'),
+    path('UpdateContentStatus/<int:id>', views.UpdateContentStatus, name='UpdateContentStatus'),
 ]

@@ -389,7 +389,6 @@ def DeleteShelter(request, id):
         print(e)
 
     return redirect('ViewShelter')
-    # return render(request, 'Management/ViewShelter.html')
 
 # 가장 마지막에 수정
 def UpdateShelter(request):
@@ -463,6 +462,18 @@ def ShowDetailContent(request, id):
     }
 
     return render(request, 'Management/DetailContent.html', context)
+
+def DeleteContent(request, id):
+    try:
+        content = Content.objects.get(id=id)
+        content.delete()
+    except Shelter.DoesNotExist:
+        print("해당 컨텐츠가 없습니다.")
+    except Exception as e:
+        print("아래 오류로 인한 예외처리")
+        print(e)
+
+    return redirect('ViewContent')
 
 # 가장 마지막에 수정
 def Updateontent(request):

@@ -80,28 +80,25 @@
                             <td>{{c.content_status}}</td>
 
                             <td>
-                                    <select name = "content_auth">
-                                            <option>승인</option>
-                                            <option>대기</option>
-                                            <option>반려</option>
-                                    </select>
-                                </td>
+                                <select name = "content_auth">
+                                    <option>승인</option>
+                                    <option>대기</option>
+                                    <option>반려</option>
+                                </select>
+                            </td>
 
-                                <td><input type="submit" value="권한변경" /></td>
+                            <td><input type="submit" value="권한변경" /></td>
 
                             <td><a href="{% url 'ShowDetailContent' c.id %}" class="btn">자세히</a></td>
-                                </form>
+                            <td><a href="{% url 'DeleteContent' c.id %}" class="btn">삭제</a></td>
+                            </form>
                         </tr>
                         {%endfor%}
                     </table>
-
-
-
                 </div>
             </div>
         </div>
     </div>
-
 <script src="{% static 'Management/js/adminDashboard.js' %}"></script>
 </body>
 </html>
