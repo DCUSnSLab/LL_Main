@@ -377,6 +377,20 @@ def ShowDetailShelter(request, id):
 
     return render(request, 'Management/DetailShelter.html', context)
 
+def DeleteShelter(request, id):
+    print("쉘터 삭제")
+    try:
+        shelter = Shelter.objects.get(id=id)
+        shelter.delete()
+    except Shelter.DoesNotExist:
+        print("해당 쉘터가 없습니다.")
+    except Exception as e:
+        print("아래 오류로 인한 예외처리")
+        print(e)
+
+    return redirect('ViewShelter')
+    # return render(request, 'Management/ViewShelter.html')
+
 # 가장 마지막에 수정
 def UpdateShelter(request):
     pass

@@ -16,6 +16,7 @@ urlpatterns = [
     path('ViewShelter/', views.ViewShelter, name='ViewShelter'),
     path('RegisterShelter/', views.RegisterShelter, name='RegisterShelter'),
     path('ShowDetailShelter/<int:id>', views.ShowDetailShelter, name='ShowDetailShelter'),
+    path('DeleteShelter/<int:id>', views.DeleteShelter, name='DeleteShelter'),
     path('UpdateShelterStatus/<int:id>', views.UpdateShelterStatus, name='UpdateShelterStatus'),
 
     path('ViewCommunity/', views.ViewCommunity, name='ViewCommunity'),

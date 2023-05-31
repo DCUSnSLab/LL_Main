@@ -74,17 +74,18 @@
                             <td>{{s.userFK}}</td>
                             <td>{{s.shelter_status}}</td>
                             <td>
-                                    <select name = "shelter_auth">
-                                            <option>활성화</option>
-                                            <option>대기</option>
-                                            <option>정지</option>
-                                    </select>
-                                </td>
+                                <select name = "shelter_auth">
+                                        <option>활성화</option>
+                                        <option>대기</option>
+                                        <option>정지</option>
+                                </select>
+                            </td>
 
-                                <td><input type="submit" value="권한변경" /></td>
+                            <td><input type="submit" value="권한변경" /></td>
 
                             <td><a href="{% url 'ShowDetailShelter' s.id %}" class="btn">자세히</a></td>
-                                </form>
+                            <td><a href="{% url 'DeleteShelter' s.id %}" class="btn">삭제</a></td>
+                            </form>
                         </tr>
                         {%endfor%}
 
