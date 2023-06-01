@@ -92,16 +92,16 @@
         <section class="containerbox">
                   <form method="POST" enctype="multipart/form-data" action="{% url 'UploadContent' shelter.id %}">
                     {% csrf_token %}
-                    <div>작자명</div>
+                    <h6><div>작자명</div></h6>
                     <div class="user-input">{{form.author}}</div>
 
-                    <div>이메일 입력</div>
+                    <h6><div>이메일 입력</div></h6>
                     <div class="user-input">{{form.email}}</div>
 
-                    <div>콘텐츠 이름</div>
+                    <h6><div>콘텐츠 이름</div></h6>
                     <div class="user-input">{{form.title}}</div>
                     
-                    <div>콘텐츠 설명</div>
+                    <h6><div>콘텐츠 설명</div></h6>
                     <div class="user-input">{{addition_form.description}}</div>
 
                     <hr>
@@ -110,36 +110,33 @@
                     <div>{{addition_form.upload_file}}</div>
                     <hr>
                     
-                    <div>전화 번호</div>
+                    <h6><div>전화 번호</div></h6>
                     <div class="user-input">{{form.phonenum}}</div>
                     <div>
-                      <span>공개 여부 확인</span>
-                      <span class="user-input">{{form.disclosure_status}}</span>
+                      <h6><span>공개 여부 확인</span>
+                      <span class="user-input">{{form.disclosure_status}}</span></h6>
                       <div><h6>* 작품 공개 승인 결과는 이메일로 전달됩니다.</h6></div>
                     </div>
                     <hr>
-                    <div>
-                      <span>개인 정보 수집 및 이용 동의서 확인</span>
-                      <span class="user-input">{{form.confirmation_use_information_status}}</span>
-                    </div>
-                    </br>
-                    <button id="openModalBtn">동의서 확인하기</button>
-                    <div id="myModal" class="modal">
-                        <div class="modal-content">
-                          <span class="close">&times;</span>
-                          <p>개인정보 수집 및 이용 동의서</p>
-                          <p>업체명 : (주)~~~~</p>
-                          <p>수집 목적 : ~~~~</p>
-                          <p>수집 항목 : ~~~~</p>
-                          <p>보유 및 이용 기간 : ~~~~~~</p>
-                        </div>
-                    </div>
-                        
-                    <hr>
                     <div class="back_submit_choice_container" style="float: right">
-                        <input type="submit" class="btn btn-primary col-12" style="cursor: pointer; border-radius: 10px; width: 70px; bottom: 10px;" value="제출">
+                        <input type="submit" class="btn btn-primary col-12" style="cursor: pointer; margin-top: 90px; border-radius: 10px; width: 70px; bottom: 10px;" value="제출">
                     </div>
                 </form>
+                <div>
+                  <h6><span>개인 정보 수집 및 이용 동의서 확인</span>
+                  <span class="user-input">{{form.confirmation_use_information_status}}</span></h6>
+                </div>
+                <button id="openModalBtn">동의서 확인하기</button>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <p>개인정보 수집 및 이용 동의서</p>
+                      <p>업체명 : (주)~~~~</p>
+                      <p>수집 목적 : ~~~~</p>
+                      <p>수집 항목 : ~~~~</p>
+                      <p>보유 및 이용 기간 : ~~~~~~</p>
+                    </div>
+                </div>
         </section>
     </section>
 
